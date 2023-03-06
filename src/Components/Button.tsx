@@ -1,25 +1,28 @@
 export default function Button({
-    children?
+    children,
     ButtonTheme,
-    Ghost
-    Activate
-    Animate
+    Ghost,
+    Activate,
+    Animate,
 }:{
-    children?: React.ReactNode
-    Theme:string
+    children?: React.ReactNode | string
+    ButtonTheme:string,
     Ghost:boolean, 
-    Activate:boolean
-    Animate:boolean
+    Activate:boolean,
+    Animate:boolean,
 }){
-    const ButtonTheme = Theme ? `-${ButtonTheme}` : ""
-    const VisualGhost = Ghost ? "btn-ghost" : ""
-    const Active_Disactive = Activate ? "btn-active" : "btn-active"
-    const Animate = Animate ? "" : "no-animation"
+    const Theme = ButtonTheme ? `btn-${ButtonTheme}` : ""
+    const VisualGhost = Ghost ? " btn-ghost" : ""
+    const Active_Disactive = Activate ? " btn-active" : " btn-disabled"
+    const AnimateBool = Animate ? "" : " no-animation"
 
-    const ButtonSetting = ButtonTheme + VisualGhost + Active_Disactive + Animate 
+    const ButtonSetting = Theme + VisualGhost + Active_Disactive + AnimateBool
+
+    console.log(ButtonSetting)
     return(
         <button className={`btn ${ButtonSetting}`} >
             {children}
         </button>
     )
+    
 }
